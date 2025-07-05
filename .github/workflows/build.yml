@@ -32,7 +32,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10' # You can specify any version of Python you need.
+          python-version: '3.13' # You can specify any version of Python you need.
 
       # Step 3: Install dependencies.
       # This includes your project's dependencies and the testing framework.
