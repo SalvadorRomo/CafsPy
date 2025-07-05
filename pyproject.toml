@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cafspy"
+version = "0.0.1"
+authors = [
+  { name="Your Name", email="you@example.com" },
+  { name="Your Name", email="you@example.com" },
+  { name="Your Name", email="you@example.com" }
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "testflows.combinatorics",
+    "scikit-learn>=1.7.0"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/my_package"
+"Bug Tracker" = "https://github.com/yourusername/my_package/issues"
