@@ -44,23 +44,14 @@ for this sample, this shows the best feature selected during **10** iterations
 
 ```
 f1 score= 0.7351370100315423, iteration:1, numbers features selected =9,best features selected=NGRDI, NDVI, RVI, DVI, EVI, REVI, NDRE, RERVI, REDVI
-
 best f1 score= 0.7216630322908072, iteration:2, numbers features selected =6,best features selected=NGRDI, NDVI, RVI, EVI, NDRE, REDVI
-
 best f1 score= 0.717571263976013, iteration:3, numbers features selected =4,best features selected=NGRDI, NDVI, RVI, NDRE
-
 best f1 score= 0.7092041147580356, iteration:4, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:5, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:6, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:7, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:8, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:9, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
-
 best f1 score= 0.7092041147580356, iteration:10, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
 ```
 
