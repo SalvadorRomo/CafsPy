@@ -9,11 +9,8 @@ from pandas.api.types import is_numeric_dtype
 from sklearn.model_selection import cross_val_score
 
 def ICAFS(X, y, t, T,lr, seed = 42, shuffle =False,print_logs=False):
-  
   """Iterative Covering Array Feature Selection Algorithm.
-
   This Mehtod runs ICAFS, a covering array beased algorithm for feture selection
-
   Args:
       X (pd.DataFrame): a dataset that forcefully must include headers as string.
       y (pd.DataFrame): a dataste of classes that forcefully must include headers as string.
@@ -24,11 +21,12 @@ def ICAFS(X, y, t, T,lr, seed = 42, shuffle =False,print_logs=False):
       shuffle(bool,optional): if true ti will perform shuffle based on the seed
       print_logs(bool,optional):print the selected features at each iteration
   Returns:
-      pd.DataFrame: A pandas DataFrame containing the processed data.
-
+      scores   : A pandas DataFrame containing the processed data.
+      features : Numbers of features Selected during each iteration 
   Raises:
-      FileNotFoundError: If the file at `filepath` does not exist.
-      ValueError: If `output_format` is not a supported format.
+      TypeError: if "lr" is NOT a scikit-learn classifier.
+      TypeError: if "X" does not contain numeric type.
+      TypeError: if "y" does not contain numeric type.
   """
 
   _validate_dataframe_model(X,y,lr)
@@ -79,6 +77,24 @@ def ICAFS(X, y, t, T,lr, seed = 42, shuffle =False,print_logs=False):
 
 
 def CAFS(ca,X,y, T ,lr,print_logs=False):
+   
+  """Covering Array Feature Selection Algorithm.
+    This Mehtod runs CAFS, a covering array beased algorithm for feture selection
+    Args:
+        ca (ndarray) : a covering array correclty precomputed
+        X (pd.DataFrame): a dataset that forcefully must include headers as string.
+        y (pd.DataFrame): a dataste of classes that forcefully must include headers as string.
+        T (int): number of iteration.
+        lr(sklearn): a sklearn classification algorithms.   
+        print_logs(bool,optional):print the selected features at each iteration
+    Returns:
+        scores   : A pandas DataFrame containing the processed data.
+        features : Numbers of features Selected during each iteration 
+    Raises:
+        TypeError: if "lr" is NOT a scikit-learn classifier.
+        TypeError: if "X" does not contain numeric type.
+        TypeError: if "y" does not contain numeric type.
+    """
 
   _validate_dataframe_model(X,y,lr) 
   num_rows = ca.shape[0]
