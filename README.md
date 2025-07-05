@@ -34,7 +34,7 @@ from sklearn.neighbors import KNeighborsClassifier
 lr_algo = KNeighborsClassifier(n_neighbors=3)
 ```
 
-Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any interaction, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. for that reason on the following papaer a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
+Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any feature, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. for that reason on the following papaer a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
 
 ```
   scores_list,feature_list = ICAFS(X_algarrobo,y_algarrobo,t=2,T=10,lr=lr_algo,print_logs=True)
