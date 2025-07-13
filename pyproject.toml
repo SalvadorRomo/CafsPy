@@ -11,6 +11,7 @@ authors = [
   { name="Your Name", email="you@example.com" }
 ]
 description = "A small example package"
+license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -24,6 +25,10 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[tool.setuptools]
+include-package-data = true
+package-data = {"" = ["NOTICE.md"]}
 
 [project.urls]
 "Homepage" = "https://github.com/yourusername/my_package"
