@@ -1,5 +1,5 @@
 # CafsPy
-A covering Array Feature Selection Library. Aditioanlly, in order to use this librabry is recomended to intstall it over a new python virtual enviroment without any **pre-intsalled** library  to avoid conflicts. 
+A covering Array Feature Selection Library. Aditionally, in order to use this librabry, it is recomended to intstall it over a new python virtual enviroment without any **pre-intsalled** library to avoid conflicts. 
 
 Instruction to install: 
 
@@ -14,7 +14,7 @@ from cafspy import ICAFS
 from cafspy import CAFS
 ```
 
-Then, in order to use ICAFS, we need to set up the datasets that you want to generate features subsets. For this sample , we will use Non-plus/ plus algarrobo available in this project. Is important to remark that the *X* dataset must containts string header and numerics values. The same must be taken into account for **y**. 
+Then, in order to use ICAFS, we need to set up the datasets that you want to generate features subsets. For this sample , we will use Non-plus/ plus algarrobo available in this project (Castro et al., 2025). Is important to remark that the *X* dataset must containts string header and numerics values. The same must be taken into account for **y**. 
 
 ```
 df_algarrobo = pd.read_csv('data/algarrobo.csv') 
@@ -27,14 +27,14 @@ y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, 
 X_algarrobo = (algarrobo_x-algarrobo_x.min())/(algarrobo_x.max()-algarrobo_x.min())
 
 ```
-Once the data is prepared, is important to define the classfication algorithm from sklearn that you want to work with. For this little sample, we will wotk with *kNN* .
+Once the data is prepared, is important to define the classfication algorithm from sklearn that you want to work with. For this little sample, we will work with *kNN* .
 
 ```
 from sklearn.neighbors import KNeighborsClassifier
 lr_algo = KNeighborsClassifier(n_neighbors=3)
 ```
 
-Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any feature, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. for that reason on the following papaer a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
+Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any feature, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. for that reason on the following paper a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
 
 ```
   scores_list,feature_list = ICAFS(X_algarrobo,y_algarrobo,t=2,T=10,lr=lr_algo,print_logs=True)
@@ -55,4 +55,9 @@ best f1 score= 0.7092041147580356, iteration:9, numbers features selected =3,bes
 best f1 score= 0.7092041147580356, iteration:10, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
 ```
 
-Another important parameter is the **shuffle** and **seed**, when acitvated and configured, different result will be gotten. 
+Another important parameter is the **shuffle** and **seed**, when acitvated and configured, different result will be gotten.
+
+----------
+REFERENCES
+
+Castro, W., Seminario, R., Nauray, W., Acevedo‐Juárez, B., De‑la‑Torre, M., & Avila‑George, H. (2025). Multispectral drone imagery dataset for plus and non‑plus Neltuma pallida trees in northern Peru. Data in Brief, 60, 111645. https://doi.org/10.1016/j.dib.2025.111645
