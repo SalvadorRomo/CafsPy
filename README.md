@@ -1,5 +1,5 @@
 # CafsPy
-A covering Array Feature Selection Library. Aditionally, in order to use this librabry, it is recomended to intstall it over a new python virtual enviroment without any **pre-intsalled** library to avoid conflicts. 
+A Covering Array Feature Selection Library. Aditionally, in order to use this librabry, it is recomended to intstall it over a new python virtual enviroment without any **pre-intsalled** library to avoid conflicts. 
 
 Instruction to install: 
 
@@ -34,7 +34,7 @@ from sklearn.neighbors import KNeighborsClassifier
 lr_algo = KNeighborsClassifier(n_neighbors=3)
 ```
 
-Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any feature, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. for that reason on the following paper a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
+Secondly, we need to definte the interaction **t**. Remember that this represent the interaction between any feature, this means that it will generate all subsets of size **t** btween any feature available. Hence, the complexity will increase. For that reason on the following paper a deep anaylisis was done to get the best interaction level. This sample will work on **t=2**, and number of iteration **T=10**. The **print_logs** will show the best features selected at each iteration. 
 
 ```
   scores_list,feature_list = ICAFS(X_algarrobo,y_algarrobo,t=2,T=10,lr=lr_algo,print_logs=True)
@@ -55,9 +55,13 @@ best f1 score= 0.7092041147580356, iteration:9, numbers features selected =3,bes
 best f1 score= 0.7092041147580356, iteration:10, numbers features selected =3,best features selected=NGRDI, NDVI, RVI
 ```
 
-Another important parameter is the **shuffle** and **seed**, when acitvated and configured, different result will be gotten.
+Another important parameter is the combination of **shuffle** and **seed**, which control the behavior of the randomization algorithm. When enabled and properly configured, they yield different results while ensuring a fixed presentation order for reproducibility.
+
+A more comprehensive understanding of the Covering Array Feature Selection (CAFS) algorithm can be achieved by consulting Castro et al. (2022).
 
 ----------
 REFERENCES
+
+Castro, W., De‑la‑Torre, M., Avila‑George, H., Torres‑Jimenez, J., Guivin, A., & Acevedo‑Juárez, B. (2022). Amazonian cacao‑clone nibs discrimination using NIR spectroscopy coupled to naïve Bayes classifier and a new waveband selection approach. Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, 270, 120815. https://doi.org/10.1016/j.saa.2021.120815
 
 Castro, W., Seminario, R., Nauray, W., Acevedo‐Juárez, B., De‑la‑Torre, M., & Avila‑George, H. (2025). Multispectral drone imagery dataset for plus and non‑plus Neltuma pallida trees in northern Peru. Data in Brief, 60, 111645. https://doi.org/10.1016/j.dib.2025.111645
