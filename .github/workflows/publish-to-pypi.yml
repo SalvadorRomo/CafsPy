@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Download all release assets
-        uses: dsaltares/download-release-asset@v2.1.1
+        uses: dsaltares/download-release-asset@v2
         with:
           repo: ${{ github.repository }}
           tag: ${{ inputs.tag }}
