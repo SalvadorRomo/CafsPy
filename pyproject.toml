@@ -28,7 +28,7 @@ classifiers = [
 
 [tool.setuptools]
 include-package-data = true
-package-data = {"" = ["NOTICE.md"]}
+package-data = {"*" = ["NOTICE.md"]}
 
 [project.urls]
 "Homepage" = "https://github.com/yourusername/my_package"
