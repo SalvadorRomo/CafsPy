@@ -27,6 +27,8 @@ jobs:
       contents: read  # Required to download release assets
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Download release assets with GitHub CLI
         env:
           # The GITHUB_TOKEN is automatically created by Actions
