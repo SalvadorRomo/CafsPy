@@ -1,34 +1,39 @@
-# .github/workflows/publish-to-pypi.yml
+# This workflow manually publishes a Python package to PyPI.
+# It requires that a GitHub Release with the package binaries (.whl, .tar.gz)
+# already exists.
 
-name: Publish CafsPy from Existing Tag
+name: Publish Python Package from Release Assets
 
+# This allows you to run the workflow manually from the Actions tab
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'The git tag of the release to publish (e.g., v1.0.1)'
+        description: 'The exact git tag of the release to publish (e.g., v1.0.1)'
         required: true
         type: string
 
 jobs:
   pypi-publish:
-    name: Upload release to PyPI
+    name: Upload release assets to PyPI
     runs-on: ubuntu-latest
+    
+    # This section is required for trusted publishing
     environment:
       name: pypi
-      url: https://pypi.org/p/cafspy # Optional: link to your package on PyPI
+      url: https://pypi.org/p/cafspy # Replace with your package name
     permissions:
       id-token: write # Required for trusted publishing
       contents: read  # Required to download release assets
 
     steps:
-      - name: Download all release assets
-        uses: dsaltares/download-release-asset@v2
-        with:
-          repo: ${{ github.repository }}
-          tag: ${{ inputs.tag }}
-          # The token is needed to overcome rate-limiting
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download release assets with GitHub CLI
+        env:
+          # The GITHUB_TOKEN is automatically created by Actions
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Download all assets (*.whl, *.tar.gz) from the specified release tag
+          gh release download ${{ inputs.tag }} --pattern '*'
 
       - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.9.0
+        uses: pypa/gh-action-pypi-publish@v1
