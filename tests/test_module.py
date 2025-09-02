@@ -18,7 +18,7 @@ from cafspy import CAFS
 pd.set_option('future.no_silent_downcasting', True)
 
 def test_icafs_cacao():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
    
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -33,7 +33,7 @@ def test_icafs_cacao():
     assert len(scores_list) == 11
 
 def test_icafs_dataframe_are_not_pandas():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
  
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -46,7 +46,7 @@ def test_icafs_dataframe_are_not_pandas():
         ICAFS(X_algarrobo,y_algarrobo,2,10,lr_algo,True)
 
 def test_icafs_y_has_two_columns():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
 
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -61,7 +61,7 @@ def test_icafs_y_has_two_columns():
 
 
 def test_icafs_y_has_two_columns():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
  
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -75,7 +75,7 @@ def test_icafs_y_has_two_columns():
         ICAFS(X_algarrobo,y_algarrobo,2,10,lr_algo,True)
 
 def test_icafs_lr_is_classification():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
 
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -89,7 +89,7 @@ def test_icafs_lr_is_classification():
         ICAFS(X_algarrobo,y_algarrobo,2,10,lr_algo,True)
 
 def test_icafs_contain_only_numbers():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
 
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -102,8 +102,8 @@ def test_icafs_contain_only_numbers():
         ICAFS(X_algarrobo,y_algarrobo,2,10,lr_algo,True)
 
 def test_cafs_cacao():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
     y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1]).to_frame()
@@ -116,8 +116,8 @@ def test_cafs_cacao():
     assert len(scores_list) == 11
 
 def test_cafs_dataframe_are_not_pandas():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
     y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1])
@@ -129,8 +129,8 @@ def test_cafs_dataframe_are_not_pandas():
         CAFS(covering_array,X_algarrobo,y_algarrobo,10,lr_algo,True)
 
 def test_cafs_y_has_two_columns():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
@@ -145,8 +145,8 @@ def test_cafs_y_has_two_columns():
 
 
 def test_cafs_y_has_two_columns():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
     y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1])
@@ -159,8 +159,8 @@ def test_cafs_y_has_two_columns():
         CAFS(X_algarrobo,y_algarrobo,10,lr_algo,True)
 
 def test_cafs_lr_is_classification():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
     y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1]).to_frame()
@@ -173,8 +173,8 @@ def test_cafs_lr_is_classification():
         CAFS(covering_array,X_algarrobo,y_algarrobo,10,lr_algo,True)
 
 def test_cafs_contain_only_numbers():
-    df_algarrobo = pd.read_csv('data/algarrobo.csv')
-    covering_array  = np.loadtxt('data/coveringArray.csv', delimiter=",", dtype=int)
+    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     unique_names_algarrobo = df_algarrobo['Labels'].unique()
     algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
     y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1])
