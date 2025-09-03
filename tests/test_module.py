@@ -18,16 +18,16 @@ from cafspy import CAFS
 pd.set_option('future.no_silent_downcasting', True)
 
 def test_icafs_cacao():
-    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    df_cacao = pd.read_csv(datapath + 'cacao.csv')
    
-    unique_names_algarrobo = df_algarrobo['Labels'].unique()
-    algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
-    y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1]).to_frame()
-    y_algarrobo = y_algarrobo.astype(int)
-    X_algarrobo = (algarrobo_x-algarrobo_x.min())/(algarrobo_x.max()-algarrobo_x.min())
+    unique_names_cacao = df_cacao['Labels'].unique()
+    cacao_x = df_cacao.loc[:, '1100':'2500']
+    y_cacao = df_cacao['Labels'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame()
+    y_cacao = y_cacao.astype(int)
+    X_cacao = (cacao_x-cacao_x.min())/(cacao_x.max()-cacao_x.min())
 
     lr_algo = KNeighborsClassifier(n_neighbors=3)
-    scores_list,feature_list = ICAFS(X_algarrobo,y_algarrobo,t=2,T=10,lr=lr_algo,print_logs=True)
+    scores_list,feature_list = ICAFS(X_cacao,y_cacao,t=2,T=10,lr=lr_algo,print_logs=True)
 
     assert len(feature_list) == 11
     assert len(scores_list) == 11
@@ -102,15 +102,17 @@ def test_icafs_contain_only_numbers():
         ICAFS(X_algarrobo,y_algarrobo,2,10,lr_algo,True)
 
 def test_cafs_cacao():
-    df_algarrobo = pd.read_csv(datapath + 'algarrobo.csv')
+    df_cacao = pd.read_csv(datapath + 'cacao.csv')
     covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
-    unique_names_algarrobo = df_algarrobo['Labels'].unique()
-    algarrobo_x = df_algarrobo.loc[:, 'R':'REDVI']
-    y_algarrobo = df_algarrobo['Labels'].replace(to_replace=unique_names_algarrobo, value=[0, 1]).to_frame()
-    y_algarrobo = y_algarrobo.astype(int)
-    X_algarrobo = (algarrobo_x-algarrobo_x.min())/(algarrobo_x.max()-algarrobo_x.min())
+    
+    unique_names_cacao = df_cacao['Labels'].unique()
+    cacao_x = df_cacao.loc[:, '1100':'2500']
+    y_cacao = df_cacao['Labels'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame() # Again... Unnecesary
+    y_cacao = y_cacao.astype(int)
+
+    X_cacao = (cacao_x-cacao_x.min())/(cacao_x.max()-cacao_x.min())
     lr_algo = KNeighborsClassifier(n_neighbors=3)
-    scores_list,feature_list = CAFS(covering_array,X_algarrobo,y_algarrobo,10,lr_algo,True)
+    scores_list,feature_list = CAFS(covering_array,X_cacao,y_cacao,10,lr_algo,True)
 
     assert len(feature_list) == 11
     assert len(scores_list) == 11
