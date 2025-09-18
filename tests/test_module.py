@@ -10,7 +10,7 @@ import sys
 sys.path.append("./../src")
 
 # Add data location to all functions, in order to run the test_module directly as a script.
-datapath = "../data/"
+datapath = "./data/"
 
 from cafspy import ICAFS
 from cafspy import CAFS
@@ -20,9 +20,9 @@ pd.set_option('future.no_silent_downcasting', True)
 def test_icafs_cacao():
     df_cacao = pd.read_csv(datapath + 'cacao.csv')
    
-    unique_names_cacao = df_cacao['Labels'].unique()
+    unique_names_cacao = df_cacao['10101010.00'].unique()
     cacao_x = df_cacao.loc[:, '1100':'2500']
-    y_cacao = df_cacao['Labels'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame()
+    y_cacao = df_cacao['10101010.00'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame()
     y_cacao = y_cacao.astype(int)
     X_cacao = (cacao_x-cacao_x.min())/(cacao_x.max()-cacao_x.min())
 
@@ -105,9 +105,9 @@ def test_cafs_cacao():
     df_cacao = pd.read_csv(datapath + 'cacao.csv')
     covering_array  = np.loadtxt(datapath + 'coveringArray.csv', delimiter=",", dtype=int)
     
-    unique_names_cacao = df_cacao['Labels'].unique()
+    unique_names_cacao = df_cacao['10101010.00'].unique()
     cacao_x = df_cacao.loc[:, '1100':'2500']
-    y_cacao = df_cacao['Labels'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame() # Again... Unnecesary
+    y_cacao = df_cacao['10101010.00'].replace(to_replace=unique_names_cacao, value=unique_names_cacao).to_frame() # Again... Unnecesary
     y_cacao = y_cacao.astype(int)
 
     X_cacao = (cacao_x-cacao_x.min())/(cacao_x.max()-cacao_x.min())
